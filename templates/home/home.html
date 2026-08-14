@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Hackathon Boilerplate{% endblock %}
+
+{% block content %}
+{% include 'home/header.html' %}
+
+<div class="container py-5">
+    <div class="row align-items-center min-vh-75">
+        <div class="col-lg-7 text-white">
+            <span class="badge bg-light text-dark mb-3">Django Authentication Starter</span>
+            <h1 class="display-4 fw-bold mb-3">Build faster with a clean hackathon-ready auth flow.</h1>
+            <p class="lead text-white-50 mb-4">
+                Start your project with secure registration, login, profile management, and a polished dashboard experience.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="{% url 'register' %}" class="btn btn-light btn-lg px-4">Create Account</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg px-4">Login</a>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="card-body p-4 bg-dark text-white">
+                    <h3 class="mb-3">Project Highlights</h3>
+                    <ul class="list-group list-group-flush bg-dark">
+                        <li class="list-group-item bg-dark text-white border-light-subtle">User registration</li>
+                        <li class="list-group-item bg-dark text-white border-light-subtle">Secure login/logout</li>
+                        <li class="list-group-item bg-dark text-white border-light-subtle">User profile management</li>
+                        <li class="list-group-item bg-dark text-white border-light-subtle">Ready for hackathon demos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

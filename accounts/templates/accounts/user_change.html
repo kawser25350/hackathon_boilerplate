@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+{% include 'home/header.html' %}
+<div class="container-fluid p-3">
+    <div class="row">
+        
+        
+        <div class="col-md-3 d-flex flex-column rounded-1 justify-content-between bg-light min-vh-100" >
+            
+            <div class="d-flex flex-column gap-2 p-3 mt-3 align-items-center w-100">
+                <span class="p-2"><i class="fa-regular fa-circle-user fa-3x"></i></span> 
+                <h3 class="p-3 text-center">{{request.user.username}}</h3>
+                <a class="btn btn-danger w-100" href="{% url 'profile' %}">Back to Profile</a>
+            </div>
+            
+            <div class="p-3">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-danger w-100" type="submit">Logout</button>
+                </form>
+            </div>
+            
+        </div>
+        
+        <div class="col-md-9 ">
+            
+            
+            
+            
+            
+            <div class=" bg-light p-5  rounded-3 ">
+                <h1 class=" text-center"> Account Detials </h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form | crispy }}
+                    <button class="btn btn-success w-100"  style="background-color:  #00272c; text-decoration: none;" type="submit" class="w-100">Change</button>
+                </form>
+                
+            </div>
+            
+            
+            
+            
+            
+            
+            
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

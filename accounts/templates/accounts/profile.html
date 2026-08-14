@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+{% include 'home/header.html' %}
+<div class="container-fluid p-3">
+    <div class="row">
+        
+        
+        <div class="col-md-3 d-flex flex-column rounded-1 justify-content-between bg-light" style="height: 93vh;">
+            
+            <div class="d-flex flex-column gap-2 p-3 mt-3 align-items-center w-100">
+                <span class="p-2"><i class="fa-regular fa-circle-user fa-3x"></i></span> 
+                <h3 class="p-3 text-center">{{account.user.username}}</h3>
+                <a class="btn btn-danger w-100" href="{% url 'edit' %}">Edit Profile</a>
+            </div>
+            
+            <div class="p-3">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-danger w-100" type="submit">Logout</button>
+                </form>
+            </div>
+            
+        </div>
+        
+        <div class="col-md-9 ">
+          
+            
+            <div class="card bg-dark  text-white p-4 shadow">
+                  <h1 class="text-center p-3 ">Profile Details</h1>
+                <form>
+                    <div class="p-2">
+                        <label for="userName" class="form-label text-light">Username:</label>
+                        <input type="text" class="form-control" id="userName" value="{{account.user.username}}" disabled>
+                    </div>
+                    
+                    <div class="row g-3 p-2">
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label text-light">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" value="{{account.user.first_name}}" disabled>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label text-light">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" value="{{account.user.last_name}}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="p-2">
+                        <label for="datOf" class="form-label text-light">Date Of Birth:</label>
+                        <input type="text" class="form-control" id="datOf" value="{{account.date_of_birth}}" disabled>
+                    </div>
+
+                    <div class="p-2">
+                        <label for="email" class="form-label text-light">Email</label>
+                        <input type="text" class="form-control" id="email" value="{{account.user.email}}" disabled>
+                    </div>
+
+                    <div class="p-2">
+                        <label for="phone" class="form-label text-light">Phone</label>
+                        <input type="text" class="form-control" id="phone" value="{{account.phone}}" disabled>
+                    </div>
+
+                    <div class="p-2">
+                        <label for="address" class="form-label text-light">Address</label>
+                        <input type="text" class="form-control" id="address" value="{{account.address}}" disabled>
+                    </div>
+                </form>
+               
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

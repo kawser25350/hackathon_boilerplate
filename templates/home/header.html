@@ -1,0 +1,25 @@
+
+<nav class="navbar bg-body-tertiary homeheader rounded-1">
+  <div class="container-fluid">
+    <div>
+      <a href="{% url 'home' %}" class="navbar-brand headertext">Hackathon Boilerplate</a>
+      <a href="{% url 'home' %}" class="ms-2 bodytext" style="text-decoration: none;">Home</a>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <div>
+        {% if request.user.is_authenticated %}
+        <div>
+          <a href="{% url 'profile' %}" class="ms-2 d-inline-flex align-items-center gap-2" style="text-decoration: none;">
+            <i class="fa-regular fa-circle-user fs-5"></i>
+            <span>{{ request.user.username }}</span>
+          </a>
+        </div>
+        {% else %}
+        <a href="{% url 'register' %}" class="btn btn-dark bodytext shadow" style="background-color: #00272c;">Register</a>
+        <a href="{% url 'login' %}" class="btn btn-dark bodytext shadow" style="background-color: #00272c;">Login</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
